@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('airports', 'AirportController@index');
+Route::get('airlines', 'AirlineController@index');
+Route::get('flights', 'FlightController@index');
