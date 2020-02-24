@@ -11,6 +11,8 @@
 |
 */
 
+use App\Http\Controllers\TripController;
+
 Route::get('/', function () {
     return view('trip');
 });
@@ -18,3 +20,4 @@ Route::get('/', function () {
 Route::get('airports', 'AirportController@index');
 Route::get('airlines', 'AirlineController@index');
 Route::get('flights', 'FlightController@index');
+Route::post('trip', 'TripController@result');

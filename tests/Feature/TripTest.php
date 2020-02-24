@@ -69,4 +69,25 @@ class TripTest extends TestCase
             'flights' => [],
         ]);
     }
+
+    /**
+     * test trip result by post data
+     * 
+     * @return void
+     */
+    public function testTripResult()
+    {
+        $response = $this->post('/trip', [
+            'isRoundTrip' => false,
+            'depart' =>  "YUL",
+            'arrival' => "YVR",
+            'departDate' => "02/24/2020",
+            'returnDate' => "02/27/2020"
+        ]);
+
+        $response->assertStatus(200);
+        $response->assertJson([
+            'tripResult' => [],
+        ]);
+    }
 }
