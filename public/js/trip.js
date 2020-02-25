@@ -176,7 +176,7 @@ $(function () {
         url: '/trip',
         method: 'POST',
         data: {
-          'isRoundTrip': tripRoute === 'roundtrip' ? true : false,
+          'isRoundTrip': tripRoute === 'roundtrip' ? 1 : 0,
           'depart': depart,
           'arrival': arrival,
           'departDate': departDate,
@@ -184,9 +184,10 @@ $(function () {
         },
         success: function success(data) {
           $('#result').html('');
-          $.each(data.tripResult, function (k, trip) {
-            console.log(trip);
-            $('#result').append('<div>' + trip + '</div>');
+          $.each(data.tripResult, function (k, trips) {
+            $.each(trips, function (i, t) {
+              $('#result').append('<div>' + t.info + ' Total price: $' + t.price + '</div><hr>');
+            });
           });
         }
       });
